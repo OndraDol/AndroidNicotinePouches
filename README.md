@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# PouchLog - Android Native App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Tato aplikace byla vygenerována a nakonfigurována pro operační systém Android. Kód obsahuje plně funkční port webové verze PouchLog, napsaný v **React Native (Expo)**, optimalizovaný na výkon a vybavený plným offline módem, haptikou, nativními gesty a synchronizací s Firebase.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Jak aplikaci spustit a otestovat na svém telefonu (DOPORUČENO)
 
-   ```bash
-   npm install
-   ```
+Jelikož nemáš dostatečně silný počítač na běh lokálního emulátoru (Android Studio vyžaduje hodně RAM), testujeme aplikaci **živě na reálném zařízení**.
 
-2. Start the app
+### Krok 1: Připrav si telefon
+1. Otevři na svém mobilním telefonu obchod **Google Play** (nebo App Store na iPhonu).
+2. Vyhledej a nainstaluj si bezplatnou aplikaci **Expo Go**.
+3. Ujisti se, že tvůj počítač i telefon jsou připojeny na stejnou Wi-Fi síť.
 
+### Krok 2: Spusť vývojový server
+1. Otevři v tomto projektu terminál (vlož cestu k `AndroidNicotinePouches`).
+2. Napiš příkaz:
    ```bash
    npx expo start
    ```
+3. Počkej pár sekund. V terminálu se ti objeví velký **QR kód**.
 
-In the output, you'll find options to open the app in a
+### Krok 3: Naskenuj a hraj
+1. Otevři fotoaparát na svém telefonu (nebo rovnou aplikaci Expo Go).
+2. Naskenuj QR kód z tvého monitoru.
+3. Aplikace se okamžitě stáhne (pár MB v lokální síti) a otevře se ti plnohodnotné rozhraní PouchLog rovnou na displeji telefonu! Kdykoliv upravíš kód na PC, na mobilu se změna vteřinově projeví.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📦 Jak vytvořit finální .APK soubor pro instalaci
 
-## Get a fresh project
+Když už appku nechceš spouštět z Terminálu, potřebuješ ji "zabalit" (.apk soubor). Zde se vyhneme zatížení tvé RAM a procesoru a přenecháme náročnou práci **cloudovým serverům Expa (EAS)**, o kterých jsme se bavili na začátku.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Zaregistruj si zdarma účet na webu [expo.dev](https://expo.dev).
+2. V terminálu do tohoto projektu zadej příkaz pro přihlášení:
+   ```bash
+   npx eas login
+   ```
+3. Zadej své jméno a heslo z kroku 1.
+4. Spusť proces Cloudového Buildování příkazem:
+   ```bash
+   npx eas build -p android --profile preview
+   ```
+5. Potvrď případné dotazy na vygenerování keystoru (dej jen "Y" - Yes).
+6. Nyní tvůj počítač nahrál zdrojový kód do cloudu. Můžeš terminál klidně zavřít. Nástroj ti poskytne **hyperliónk**, kam stačí kliknout a sledovat frontu na serveru.
+7. Zhruba za 10 až 15 minut bude proces na cizím serveru hotov a zobrazí ti **Install QR Code**. Po naskenování QR kódu ti mobil sám stáhne `.apk` soubor a ty už máš na obrazovce klasickou zelenou ikonku **PouchLog**, která pojede už i tehdy, pokud máš počítač dávno vypnutý.

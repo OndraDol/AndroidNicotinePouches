@@ -1,0 +1,17 @@
+{
+  "today_usage": "TODAY",
+  "streak": "STREAK",
+  "money_saved": "SAVED",
+  "pouches_used": "pouches used",
+  "log_usage": "Log Usage",
+  "charts_title": "Analytics",
+  "history": "History",
+  "view_all": "View All",
+  "achievements": "Achievements",
+  "health_timeline": "Health Recovery",
+  "settings": "Settings",
+  "limit_label": "Limit",
+  "cost_label": "Cost",
+  "days_recorded": "days recorded",
+  "auth_btn": "Sync / Data"
+}
