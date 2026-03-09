@@ -7,7 +7,7 @@ export interface PouchEntry {
     brand: string;
     name: string;
     mg: number;
-    date: string;
+    timestamp: string;
     localDate: string;
 }
 
@@ -57,7 +57,7 @@ export const useAppStore = create<AppState>()(
                 goal: 'track',
                 createdAt: Date.now(),
             },
-            selection: null,
+            selection: { b: 'Velo', n: 'Mint', mg: 10 },
             customPouches: [],
             theme: 'dark',
 

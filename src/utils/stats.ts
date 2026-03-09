@@ -39,7 +39,11 @@ export function getDynamicLimitForDate(settings: any, dateInput: Date | number |
     return Math.max(0, Math.floor(calculated));
 }
 
-export function calculateStats(history: any[], settings: any, USER_BENCHMARKS: any[]) {
+import { USER_BENCHMARKS as DEFAULT_BENCHMARKS } from '../constants/pouchDb';
+
+export function calculateStats(history: any[], settings: any, benchmarks: any[] = DEFAULT_BENCHMARKS) {
+    const USER_BENCHMARKS = benchmarks || DEFAULT_BENCHMARKS;
+
     const days: { [key: string]: number } = {};
     history.forEach(h => {
         const d = h.localDate || getLocalISODate(h.date);
@@ -95,5 +99,13 @@ export function calculateStats(history: any[], settings: any, USER_BENCHMARKS: a
     const dailyAvg = history.length / (Object.keys(days).length || 1);
     const benchmark = USER_BENCHMARKS.find(b => dailyAvg <= b.max) || USER_BENCHMARKS[USER_BENCHMARKS.length - 1];
 
-    return { streak, savedTotal, yesterdaySuccess, dailyAvg, cleanWeekend, benchmark };
+    return {
+        streak,
+        moneySaved: savedTotal,
+        yesterdaySuccess,
+        avgPerDay: dailyAvg,
+        cleanWeekend,
+        benchmark,
+        dailyLimit: limit
+    };
 }
